@@ -29,21 +29,27 @@
             <table class="table table-striped table-hover">
                 <thead>
                     <tr>
+                        <th>No</th>
                         <th>ID</th>
                         <th>Judul</th>
                         <th>Kategori</th>
                         <th>Halaman</th>
                         <th>Penerbit</th>
+                        <th>Penulis</th>
                     </tr>
                 </thead>
                 <tbody>
                     @forelse ($books as $book)
                         <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
+                            <td>{{ $book->id }}</td>
                             <td>{{ $book->judul }}</td>
                             <td>{{ $book->kategori }}</td>
                             <td>{{ $book->halaman }}</td>
                             <td>{{ $book->penerbit }}</td>
+                            <td>{{ $book->author->penulis }}</td>
+                            {{-- <td>{{ $book->authors_id }}</td> --}}
+
                             {{-- <td style="width: 40%">{{ $book->description }}</td> --}}
                             <td><a href="{{ route('books.edit', $book->id) }}">
                                     <button class="btn btn-warning btn-sm">Edit</button></a></td>

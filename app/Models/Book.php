@@ -3,22 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model; 
+use Illuminate\Database\Eloquent\Model;
 
 class Book extends Model
 {
     use HasFactory;
 
-    protected $guarded;
-    public function authors()
-    {
-        // return $this->hasMany(Author::class);
-        return $this->belongsTo(Author::class, 'foreign_key');
-        $authors = Author::find(5)->authors;
+    protected $table = 'books';
+    protected $guarded = [];
 
-        foreach ($authors as $author) {
 
-        }
+
+    protected $fillable = [
+        'id', 'judul', 'halaman', 'kategori', 'penerbit', 'authors_id'
+    ];
+
+
+    public function author(){
+        return $this->belongsTo(Author::class,'authors_id');
     }
-
 }

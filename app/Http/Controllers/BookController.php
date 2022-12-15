@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Book;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BookController extends Controller
 {
@@ -14,7 +16,7 @@ class BookController extends Controller
      */
     public function index()
     {
-        $books = Book :: all();
+        $books = Book ::with('author')->paginate();
         return view('books.index', compact('books'));
     }
 
@@ -25,6 +27,7 @@ class BookController extends Controller
      */
     public function create()
     {
+
         return view('books.create');
     }
 
@@ -41,7 +44,8 @@ class BookController extends Controller
             'judul'=> 'required|max:255',
             'kategori'=> 'required|max:100',
             'halaman'=> 'required|integer|min:100|max:299999',
-            'penerbit'=> 'required|max:255'
+            'penerbit'=> 'required|max:255',
+            'authors_id'=> 'required',
 
         ];
 
@@ -91,7 +95,9 @@ class BookController extends Controller
             'judul'=> 'required|max:255',
             'kategori'=> 'required|max:100',
             'halaman'=> 'required|integer|min:100|max:299999',
-            'penerbit'=> 'required|max:255'
+            'penerbit'=> 'required|max:255',
+            'authors_id'=> 'required',
+
 
         ];
 

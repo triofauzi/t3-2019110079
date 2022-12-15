@@ -1,7 +1,7 @@
 @extends('layouts/master')
 @section('title', 'Edit Book')
 @section('content')
-    <h2>Update New Movie</h2>
+    <h2>Update New Book</h2>
     <form action="{{ route('books.update', ['book' => $book->id]) }}" method="POST">
         @csrf
         @method('put')
@@ -43,6 +43,14 @@
                 <input type="text" class="form-control @error('penerbit') is-invalid @enderror" name="penerbit"
                     id="penerbit" value="{{ old('penerbit') ?? $book->penerbit }}">
                 @error('penerbit')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+            <div class="col-md-6 mb-3">
+                <label for="authors_id">ID</label>
+                <input type="text" class="form-control @error('authors_id') is-invalid @enderror" name="authors_id" id="authors_id"
+                    value="{{ old('authors_id') ?? $book->authors_id }}">
+                @error('authors_id')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
