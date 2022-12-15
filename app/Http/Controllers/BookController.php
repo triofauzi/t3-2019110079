@@ -106,7 +106,7 @@ class BookController extends Controller
 
         $book->update($validated);
         $request->session()->flash('success', "Berhasil memperbarui data film {$validated['judul']}.");
-        return redirect()->route('books.index')->with('success', "Data Film {$book['judul']} Sudah Dihapus. ");
+        return redirect()->route('books.index')->with('success', "Data Buku {$book['judul']} Sudah Diubah. ");
 
     }
 
@@ -120,6 +120,6 @@ class BookController extends Controller
     {
         $book->delete();
 
-        return redirect()->route('books.index')->with('succsess', "Berhasil menghapus {$book['judul']}sudah dihapus.");
+        return redirect()->route('books.index')->with('success', "Data Film {$book['judul']} Sudah Dihapus. ");
     }
 }

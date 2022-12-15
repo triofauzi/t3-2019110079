@@ -54,12 +54,17 @@
                             <td><a href="{{ route('books.edit', $book->id) }}">
                                     <button class="btn btn-warning btn-sm">Edit</button></a></td>
                             <td>
-                                <form action="{{ route('books.destroy', $book->id) }}" method="post">
-                                    @csrf
+                                <form action="{{ route('books.destroy', $book->id) }}" method="POST">
+
                                     <button class="btn btn-danger btn-sm"
                                         onClick="return confirm('Yakin mau dihapus?')">Hapus</button>
+                                        @method('DELETE')
+                                        @csrf
+
                                 </form>
                             </td>
+
+
                         </tr>
                     @empty
                         <tr>
